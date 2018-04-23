@@ -9,12 +9,15 @@ DROP TABLE IF EXISTS events_elo;
 CREATE TABLE events_elo AS
 	(SELECT game_dt, bat_id, pit_id, 
 		CASE
-			WHEN bunt_fl = "T" and (event_cd = 2 or event_cd = 20) THEN "batter" 
-			WHEN bunt_fl = "T" and event_cd = 19 THEN "pitcher" 
-			WHEN bunt_fl = "F" and (event_cd = 14 or event_cd = 16 or event_cd = 20 or event_cd = 21 or event_cd = 22 or event_cd = 23) THEN "batter" 
-			WHEN bunt_fl = "F" and (event_cd = 2 or event_cd = 3) THEN "pitcher"
-			ELSE "tie"
-		END AS "winner"
+			WHEN event_cd = 14 or event_cd = 16 or event_cd = 20 or event_cd = 21 or event_cd = 22 or event_cd = 23 THEN 1
+			WHEN event_cd = 2 or event_cd = 3 THEN 0
+			ELSE 0.5
+		END AS "batter_score", 
+        CASE
+			WHEN event_cd = 14 or event_cd = 16 or event_cd = 20 or event_cd = 21 or event_cd = 22 or event_cd = 23 THEN 0
+			WHEN event_cd = 2 or event_cd = 3 THEN 1
+			ELSE 0.5
+		END AS "pitcher_score"
 	FROM
 		(SELECT game_dt, bat_id, pit_id, event_cd, bunt_fl
 		FROM events e
@@ -24,5 +27,5 @@ CREATE TABLE events_elo AS
 		-- LIMIT 500
         ) a);
 
-select * from elo
+#select * from elo;
 select * from events_elo;

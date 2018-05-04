@@ -1,3 +1,5 @@
+use 2010s_retrosheet;
+
 DROP TABLE IF EXISTS elo;
 CREATE TABLE elo AS
 	(SELECT player_id, last_name_tx, first_name_tx, team_id, team_tx, pos_tx, "1500" as elo_rating
@@ -27,5 +29,5 @@ CREATE TABLE events_elo AS
 		-- LIMIT 500
         ) a);
 
-#select * from elo;
+select * from elo;
 select * from events_elo;

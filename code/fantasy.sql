@@ -2,7 +2,7 @@ use lahman2016;
 
 DROP TABLE IF EXISTS bat;
 CREATE TEMPORARY TABLE bat AS
-select DISTINCT b.playerID, nameFirst, nameLast, score
+select DISTINCT m.retroID as player_id, nameFirst, nameLast, score
 from 
 	(select a.playerID, (1B*.88 + 2B*1.2 + 3B*1.55 + HR*1.98 + BB*0.69 + RBI*.75 + a.SB*0.2 + K*-0.2 + HBP*0.72 + SAC*0.1 + a.CS*-0.42) as score
 	from
@@ -18,7 +18,7 @@ order by score desc;
 
 DROP TABLE IF EXISTS pitch;
 CREATE TEMPORARY TABLE pitch AS
-select b.playerID, nameFirst, nameLast, score
+select m.retroID as player_id, nameFirst, nameLast, score
 from 
 	(select playerID, (IP*1.2 + ER*-2 + W*4 + L*-4 + SV*3 + SO*1 + G*0.5 + BK*-1 + CG*0.75) as score
 	from

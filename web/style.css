@@ -1,6 +1,7 @@
 body {
   font-family: Helvetica Neue, Arial, sans-serif;
   text-align: center;
+  background-color: #EFEFEF; 
 }
 
 .wrapper {
@@ -9,16 +10,18 @@ body {
 }
 
 h1 {
-  font-weight: 200;
-  font-size: 3em;
-  margin: 0 0 0.1em 0;
+  font-family: 'Open Sans Condensed',
+  sans-serif;
+  font-size: 48px;
+  color: #333;
 }
 
 h2 {
-  font-weight: 200;
-  font-size: 0.9em;
-  margin: 0 0 50px;
-  color: #999;
+  font-family: 'Open Sans Condensed',
+  sans-serif;
+  font-size: 24px;
+  color: #222;
+   margin: 0 0 50px;
 }
 
 a {
@@ -28,7 +31,14 @@ a {
 }
 
 option.head {
+    color: #ff6600;
     selected:selected;
     display:none;
     disabled:disabled;
+}
+
+p { 
+  color: #333;
+  font-family: 'Muli', sans-serif;
+  margin-bottom: 15px;
 }

@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<!-- <div class="header" id="myHeader">
-        <h2>My Header</h2>
-</div> -->
+<div class="header" id="myHeader">
+        <h2>baseball.connor.fun - A direct competitor to FiveThirtyEight.com: A Nate Silver Brand</h2>  
+        <p><a href="page1-bvp.html">Batter vs Pitcher</a> <a href="page2-bvb">Batter vs Batter</a> <a href="page3-pvp">Pitcher vs Pitcher</a></p>
+
+</div>
   <head>
 <html>
     <title>baseball.connor.fun</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
 <article>
-  <h1>baseball.connor.fun</h1>
-  <bc margin: 15px>A direct competitor to FiveThirtyEight.com: A Nate Silver Brand</bc>
-  <h2>A Player Rating System</h2>
+  <h1>A Player Rating System</h1>
   <p>    We’ve all seen ways of evaluating baseball players.  Most of these rely on quantifying specific aspects of a players’ performance and using these in a direct comparison.  While this can be an informative approach, it reduces player performance to a single aspect of play.  More complex statistics, such as WAR, attempt to classify the true ability of a player over one that is “replacement level”.  This provides a better look at the relative quality of a player but the barrier to calculate this statistic is high.  It requires a deep understanding of sabermetrics to explain and implement.  We propose a simpler method of comparing player performance based on the most iconic aspect of the game – a batter facing off against a pitcher.  Instead of relying on weighted calculations of player performance, we simply look to player performance in these matchups.</p>
   <p>We have created a rating system based on the work of Arpad Elo.  During the 20th century, Elo proposed a rating system for chess.  Instead of trying to assign a score to individual actions of a game, he assigned a score exclusively to the outcome of a game.  It is assumed that the winning player competes at a higher level than their opponent.  Therefore, there is no reason to try to prove that with anything other than the outcome.  Ratings are calculated based on whether a player won, lost, or drew a zero-sum situation.  All players begin with an initial rating.  When they play another player, the expected result is calculated.  If player A has a higher rating than player B, player A is expected to win.  This means that if A wins, A “steals” some of B’s rating.  If B manages to win, B steals some of A’s rating.  However, since B winning is an unexpected outcome, the amount of points gained by B is greater than A would receive for a victory in the same matchup.  In the context of baseball, we argue that a faceoff between a batter and a pitcher is a zero-sum situation where only one player can be victorious.</p>
   <p>Elo rating systems have been created for baseball in the past though they always focus on team performance.  This is because the Elo system assumes a mostly level playing field.  Even though the first player that moves in chess does have an advantage, this only amounts to a 52-56% win rate for this player.  Chess has taken steps to mitigate this effect by having players play multiple games in a single match.  The matchups of batters and pitchers are far from even.  In 2016, the mean batting average for every player in major league baseball was under 0.25.  This means that only a quarter of all balls pitched were even hit by batters.</p>

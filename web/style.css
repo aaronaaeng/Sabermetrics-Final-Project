@@ -1,10 +1,13 @@
 body {
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Helvetica Neue, Arial, sans-serif;
   text-align: center;
   background-color: #FEFEFE; 
 }
 
-
+.wrapper {
+  max-width: 800px;
+  margin: 50px auto;
+}
 
 h1 {
   font-family: 'Open Sans Condensed',
@@ -18,7 +21,6 @@ h2 {
   sans-serif;
   font-size: 24px;
   color: #222;
-  margin: 20 0 70px;
 }
 
 a {
@@ -32,19 +34,18 @@ option.head {
     disabled:disabled;
 }
 
-p { 
-  color: #333;
-  font-family: 'Open Sans Condensed', sans-serif;
-  margin-bottom: 15px;
-  text-align: justify;
-  text-justify: inter-word;
-  text-indent: 30px;
-}
-
 article {
   width: 820px;
   margin-left: auto;
   margin-right: auto;
+}
+
+p { 
+  color: #333;
+  font-family: 'Open Sans Condensed', sans-serif;
+  text-align: justify;
+  text-justify: inter-word;
+  margin-bottom: 15px;
 }
 
 div {
@@ -53,8 +54,10 @@ div {
 }
 
 .header {
-  padding: 10px 16px;
+  padding: 0px 20px;
+  background: #FEFEFE;
   color: #f1f1f1;
+  border-bottom: 2px solid black;
 }
 
 /* Page content */

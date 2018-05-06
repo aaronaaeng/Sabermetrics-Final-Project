@@ -44,7 +44,7 @@ window.onload = function () {
         },
         options: {
           title: {
-            display: true,
+            display: false,
             text: "Batter vs. Pitcher"
           }
         }

@@ -23,6 +23,13 @@ h2 {
   color: #222;
 }
 
+h3 {
+  font-family: 'Open Sans Condensed',
+  sans-serif;
+  font-size: 16px;
+  color: #222;
+}
+
 a {
   color: #3e95cd;
 }

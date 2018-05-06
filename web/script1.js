@@ -46,7 +46,21 @@ window.onload = function () {
           title: {
             display: false,
             text: "Batter vs. Pitcher"
-          }
+          }, 
+          scales: {
+		    yAxes: [{
+		      scaleLabel: {
+		        display: true,
+		        labelString: 'Normalized ELO Rating'
+		      }
+		    }], 
+		    xAxes: [{
+		      scaleLabel: {
+		        display: true,
+		        labelString: 'Number of Games into the Season'
+		      }
+		    }]
+		  }
         }
       });
     };

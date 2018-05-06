@@ -1,17 +1,58 @@
 <!DOCTYPE html>
-<html>
+<!-- <div class="header" id="myHeader">
+        <h2>My Header</h2>
+</div> -->
   <head>
+<html>
     <title>baseball.connor.fun</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-
 <article>
   <h1>baseball.connor.fun</h1>
-  <h2>A direct competitor to FiveThirtyEight.com: A Nate Silver Brand</h2>
-  <p>Google Chrome is a free, open-source web browser developed by Google, released in 2008.</p>
+  <bc margin: 15px>A direct competitor to FiveThirtyEight.com: A Nate Silver Brand</bc>
+  <h2>A Player Rating System</h2>
+  <p>    We’ve all seen ways of evaluating baseball players.  Most of these rely on quantifying specific aspects of a players’ performance and using these in a direct comparison.  While this can be an informative approach, it reduces player performance to a single aspect of play.  More complex statistics, such as WAR, attempt to classify the true ability of a player over one that is “replacement level”.  This provides a better look at the relative quality of a player but the barrier to calculate this statistic is high.  It requires a deep understanding of sabermetrics to explain and implement.  We propose a simpler method of comparing player performance based on the most iconic aspect of the game – a batter facing off against a pitcher.  Instead of relying on weighted calculations of player performance, we simply look to player performance in these matchups.</p>
+  <p>We have created a rating system based on the work of Arpad Elo.  During the 20th century, Elo proposed a rating system for chess.  Instead of trying to assign a score to individual actions of a game, he assigned a score exclusively to the outcome of a game.  It is assumed that the winning player competes at a higher level than their opponent.  Therefore, there is no reason to try to prove that with anything other than the outcome.  Ratings are calculated based on whether a player won, lost, or drew a zero-sum situation.  All players begin with an initial rating.  When they play another player, the expected result is calculated.  If player A has a higher rating than player B, player A is expected to win.  This means that if A wins, A “steals” some of B’s rating.  If B manages to win, B steals some of A’s rating.  However, since B winning is an unexpected outcome, the amount of points gained by B is greater than A would receive for a victory in the same matchup.  In the context of baseball, we argue that a faceoff between a batter and a pitcher is a zero-sum situation where only one player can be victorious.</p>
+  <p>Elo rating systems have been created for baseball in the past though they always focus on team performance.  This is because the Elo system assumes a mostly level playing field.  Even though the first player that moves in chess does have an advantage, this only amounts to a 52-56% win rate for this player.  Chess has taken steps to mitigate this effect by having players play multiple games in a single match.  The matchups of batters and pitchers are far from even.  In 2016, the mean batting average for every player in major league baseball was under 0.25.  This means that only a quarter of all balls pitched were even hit by batters.</p>
+  <p>This presents the statistic with a fundamental problem: pitchers will always be rated higher than batters.  Therefore, unlike other applications of Elo systems, the ratings of all baseball players cannot be compared.  The goals of a pitcher and a batter are so asymmetric that they may as well be playing two separate sports.  This means that no pitcher can ever be directly compared to a batter.  What can be compared, though, is the performance of a batter relative to all other batters with the performance of a pitcher relative to all other pitchers.  This allows for claims to be made such as “Kershaw was a better pitcher than Trout was a batter”.</p>
+  <p>For this analysis, we used seasonal retrosheet data from the 2013 season.  Pitchers were only included in the calculation if they pitched in more than four games.  Batters were only included if they made a plate appearance in more than twenty games.  This discrepancy is based on the surprisingly high difference in the number of games played by batters in pitchers.  The rating of a player isn’t reported until their rating adjusts by a cumulative total of 20 points.  This is done to prevent the players who only go up to bat once from impacted the normalization of the entire dataset (more on that later).</p>
+  <p>In order to evaluate the effectiveness of the model, we compared our results to the <a href="http://bleacherreport.com/articles/1794425-the-25-best-mlb-players-of-2013">Bleacher Report’s top 5 batters and pitchers from 2013</a>.  The top five pitchers can be seen highlighted below:</p> 
+  <img src="../figures/Pitchers Rating.png" alt="The Elo Rating of All Pitchers in the 2013 Season", align="middle">
+  <p></p>
+  <img src="../figures/Batters Rating.png" alt="The Elo Rating of All Batters in the 2013 Season", align="middle">
+  <p>A problem seemingly becomes apparent with the batters.  The rating of the “top 5” batters is looks to be surprisingly low.  This becomes even more surprising when it is compared to other statistics.  Let’s look specifically at Mike Trout.  He was Bleacher Report’s best player in 2013.  The article refers to him as, “the ruler of baseball sent to this universe to shatter every record in sight”.  Here, he appears to be a below average batter.  That’s weird because in 2013, Mike Trout had a BABIP of 0.376 and an fWAR of 10.4.  This is likely because Trout played in 157 games in 2013.  This is almost three times as many games as the mean number of games played by a batter that year.  Because batters are expected to lose more than they are expected to win, an excellent batter that plays in almost every game in a season is going to have a lower rating than a terrible batter than makes twenty plate appearances across twenty games.  Chess avoids this by having players switch sides.  However, baseball does not lend itself well to this as the roles of players differ by position.  This problem with Trout also could impact the accuracy of the pitcher ratings.  Because pitchers are expected to win more often than lose the more pitches they have, the higher their rating will be.  Though it does have an impact, it is important to note that the number of games played for these pitchers is still close to the mean number of games played in the league.  Kershaw was the highest rated pitcher in 2013.  He played in 33 games which is only 7 more than the mean of 26 games for a pitcher that year. </p>
+  <p>These problems be seen manifested in the normalized ratings.  By normalizing the ratings as the season continues, we can see in which percentile a player performed.</p>
+  <img src="../figures/Pitchers Normalized.png" alt="The Normalized Rating of All Pitchers in the 2013 Season", align="middle">
+  <p></p>
+  <img src="../figures/Batters Normalized.png" alt="The Normalized Rating of All Batters in the 2013 Season", align="middle">
+  <p>While we can see the top pitchers rise to the top, the top batters are falling relative to all other players.  Though normalization, we can more clearly see the problems that arise within the batting ratings.  Some players can be clearly seen consistently at the top percentiles.  Because they begin at this top spot, it’s likely that they played a few games at the beginning of the season then stopped playing.  This means that their rating will constantly be far higher than other players as they won’t have as many opportunities to lose their score.  So long as this issue persists, this rating system is too flawed to be used.</p>
+  <p>calculation, the pitcher’s updated rating is calculated against the initial value of 1500.  This has minimal impact when few batters are omitted but would have great impacts if large amounts of batters are omitted.  Another possible solution is to implement a “rating decay”.  This is a practice commonly used in competitive video games.  Most competitive online games use an Elo system for ranking.  This prompted players to climb to as high as a point as possible then simply stop playing.  If they were no longer playing, their rank could never decrease.  This caused the population of high-rank players to be much larger than intended.  In order to combat this problem, rankings will slowly decrease over time.  This provides an incentive for players to continue to play.  Though this would likely have a positive impact on the accuracy of batter ratings, it fails to address the root cause of the issue.  It is easier for a pitcher to win that it is for a batter.  So instead of scaling ratings after they have been calculated, the calculation can simply be adjusted to account for this issue.  The current expected outcome calculation assumes an equal likelihood of victory for each player.  This could be adjusted to expect more wins for a pitcher than a batter.  This would improve the rating for both pitchers and batters by preventing player ratings from being adversely impacted by the number of games played.</p>
+  <p>Even though I have just spent a while explaining the flaws in the statistic, it is still interesting to imagine this statistic in its final form.  In order to not let any of my plots go to waste, let’s look at the messiest of them all:</p>
+  <img src="../figures/Top 5 Each Plot Normalized.png" alt="The Elo Rating of All Pitchers in the 2013 Season", align="middle">
+  <p>Though this is a slight disaster, you get the idea.  Assuming this plot was based on correct data, one could say that there was evidence that Clayton Kershaw was a better pitcher that Trevor Story was a batter in 2013.</p>
 </article>
 
 </body>
 </html>
+
+<script>
+// When the user scrolls the page, execute myFunction 
+window.onscroll = function() {myFunction()};
+
+// Get the header
+var header = document.getElementById("myHeader");
+
+// Get the offset position of the navbar
+var sticky = header.offsetTop;
+
+// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+</script>

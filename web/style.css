@@ -1,13 +1,10 @@
 body {
-  font-family: Helvetica Neue, Arial, sans-serif;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
   text-align: center;
-  background-color: #EFEFEF; 
+  background-color: #FEFEFE; 
 }
 
-.wrapper {
-  max-width: 800px;
-  margin: 50px auto;
-}
+
 
 h1 {
   font-family: 'Open Sans Condensed',
@@ -21,12 +18,10 @@ h2 {
   sans-serif;
   font-size: 24px;
   color: #222;
-   margin: 0 0 50px;
+  margin: 20 0 70px;
 }
 
 a {
-  margin-top: 50px;
-  display: block;
   color: #3e95cd;
 }
 
@@ -39,6 +34,42 @@ option.head {
 
 p { 
   color: #333;
-  font-family: 'Muli', sans-serif;
+  font-family: 'Open Sans Condensed', sans-serif;
   margin-bottom: 15px;
+  text-align: justify;
+  text-justify: inter-word;
+  text-indent: 30px;
+}
+
+article {
+  width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.header {
+  padding: 10px 16px;
+  color: #f1f1f1;
+}
+
+/* Page content */
+.content {
+  padding: 16px;
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 102px;
 }

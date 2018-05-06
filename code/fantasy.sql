@@ -8,7 +8,7 @@ from
 	from
 		(select playerID, teamID, yearID, (H - (2B + 3B + HR)) as 1B, 2B, 3B, HR, BB, RBI, SB, SO as K, HBP, (SF + SH) as SAC, CS
 		from batting 
-		where yearID = '2013' and playerID NOT IN (SELECT playerID FROM pitching)) a )b
+		where yearID = '2013' and G >= 20 and playerID NOT IN (SELECT playerID FROM pitching)) a )b
 left join 
 master m
 on b.playerID = m.playerID
@@ -24,7 +24,7 @@ from
 	from
 		(select playerID, teamID, IPouts/3 as IP, ER, W, L, SV, SO, G, BK, CG
 		from pitching 
-		where yearID = '2013') a) b
+		where yearID = '2013' and G >= 4) a) b
 left join 
 master m
 on b.playerID = m.playerID

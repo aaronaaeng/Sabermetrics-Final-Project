@@ -1,7 +1,9 @@
 # CSCI 4831 Sabermetrics - Final Project
 ### An Elo rating system for batters and pitchers, by Ashna Guliani & Aaron Aaeng
 
-http://baseball.connor.fun
+Link to website: http://baseball.connor.fun
+
+Link to video: https://youtu.be/t0HCSp65nrA
 
 Our idea for a new statistic is an ELO rating system, based on the idea that each at-bat of a hitter against a pitcher is a zero-sum situation, in which “each participant's gain or loss of utility is exactly balanced by the losses or gains of the utility of the other participants.” Each time a batter reaches base, it’s considered a victory for the batter. Whenever a batter does not reach base, it’s considered a victory for the pitcher. We won’t be considering the type of hit or out as a “margin of victory” because of the overfitting that Daniel Webb from the USOC said that they experienced when he came to speak to us in class. All players start off with a standardized starting score of 1500. Before each at-bat, or match-up, an expected outcome for each participant is calculated using their respective scores. After each match-up, the winner receives a number of points based on the expected outcome and the loser loses the same number of points. We used the following formulas to determine scores after each matchup:
 

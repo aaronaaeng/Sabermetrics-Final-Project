@@ -4,12 +4,14 @@
     <title>Batter vs Pitcher ELO Ratings for the 2013 MLB Season</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="/web/constants.js"></script>
   </head>
   <body>
 
     <div class="wrapper">
       <h1>Batter vs Pitcher!!</h1>
-      <select id="batter">
+      <select id="batter" onchange="updateChart();">
         <option value="NULL">Select Batter</option>
         <option value="A. J. Ellis">A. J. Ellis</option>
         <option value="A. J. Pierzynski">A. J. Pierzynski</option>
@@ -466,7 +468,7 @@
 
 
 
-      <select id="pitcher">
+      <select id="pitcher" onchange="updateChart();">
             <option value="NULL">Select Pitcher</option>
             <option value="A. J. Burnett">A. J. Burnett</option>
             <option value="A. J. Griffin">A. J. Griffin</option>
@@ -1084,6 +1086,6 @@
       <canvas id="line-chart" width="1600" height="900"></canvas>
     </div>
 
-    <script src="script1.js"></script>
+    <script src="batter_v_pitcher.js"></script>
   </body>
 </html>

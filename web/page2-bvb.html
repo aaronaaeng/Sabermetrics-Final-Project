@@ -4,12 +4,15 @@
     <title>Batter vs Batter ELO Ratings for the 2013 MLB Season</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="/web/constants.js"></script>
+
   </head>
   <body>
 
     <div class="wrapper">
         <h1>Batter vs Batter!!</h1>
-    <select id="batter1">
+    <select id="batter1" onchange="updateBatterChart();">
         <option value="NULL">Select Batter</option>
         <option value="A. J. Ellis">A. J. Ellis</option>
         <option value="A. J. Pierzynski">A. J. Pierzynski</option>
@@ -463,7 +466,7 @@
     </select>
 
 
-    <select id="batter2">
+    <select id="batter2" onchange="updateBatterChart();">
         <option value="NULL">Select Batter</option>
         <option value="A. J. Ellis">A. J. Ellis</option>
         <option value="A. J. Pierzynski">A. J. Pierzynski</option>
@@ -919,6 +922,6 @@
       <canvas id="line-chart" width="1600" height="900"></canvas>
     </div>
 
-    <script src="script2.js"></script>
+    <script src="batter_v_batter.js"></script>
   </body>
 </html>
